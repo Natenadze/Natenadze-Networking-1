@@ -9,56 +9,61 @@ import UIKit
 
 class SecondVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var comment: String?
+    var commentURL:String = ""
+    var commentsArray = [CommentData]()
     
      let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return table
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
+        
+        performRequestForComments(with: commentURL)
+
         tableView.frame = view.frame
         
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
-        tableView.reloadData()
-
     }
     
+    func performRequestForComments(with url: String) {
+        
+        guard let url = URL(string: url) else {return}
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error {
+                print(error.localizedDescription)
+            }
+            guard let data else {return}
+            let result = try? JSONDecoder().decode([CommentData].self, from: data)
+            print(result!.count)
+            guard let result else {return}
+            self.commentsarrayManager(result)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+          
+        }.resume()
+    }
+    
+    func commentsarrayManager(_ json: [CommentData]) {
+        commentsArray.append(contentsOf: json)
+    }
+    
+   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        commentsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = comment
+        cell.textLabel?.text = self.commentsArray[indexPath.row].body
         return cell
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
