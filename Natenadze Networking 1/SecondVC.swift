@@ -25,6 +25,7 @@ class SecondVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
+        tableView.reloadData()
 
     }
     
