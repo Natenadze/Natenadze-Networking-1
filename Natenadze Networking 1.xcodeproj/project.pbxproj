@@ -55,6 +55,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5D5C16B92949278000A9FFF2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5DCC5D082941EF2C005F05AD /* ViewController.swift */,
+				5D3013CF29433B3400FB631C /* SecondVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5D5C16BA2949278D00A9FFF2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DCC5D0A2941EF2C005F05AD /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5DCC5CF82941EF2C005F05AD = {
 			isa = PBXGroup;
 			children = (
@@ -77,9 +94,8 @@
 				5DCC5D042941EF2C005F05AD /* AppDelegate.swift */,
 				5DCC5D062941EF2C005F05AD /* SceneDelegate.swift */,
 				5D5C16B62948EB7D00A9FFF2 /* Model */,
-				5DCC5D082941EF2C005F05AD /* ViewController.swift */,
-				5D3013CF29433B3400FB631C /* SecondVC.swift */,
-				5DCC5D0A2941EF2C005F05AD /* Main.storyboard */,
+				5D5C16BA2949278D00A9FFF2 /* View */,
+				5D5C16B92949278000A9FFF2 /* Controller */,
 				5DCC5D0D2941EF2E005F05AD /* Assets.xcassets */,
 				5DCC5D0F2941EF2E005F05AD /* LaunchScreen.storyboard */,
 				5DCC5D122941EF2E005F05AD /* Info.plist */,

@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         tableView.sectionFooterHeight = 0.0
         view.addSubview(tableView)
         
-        NetworkManager.shared.performRequestForPosts(postUrl) { (data: [PostData]) in
+        NetworkManager.shared.performURLRequest(postUrl) { (data: [PostData]) in
             self.postsArrayManager(data)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
