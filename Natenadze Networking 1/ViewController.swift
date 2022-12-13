@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     // MARK: -  Networking
     
     func performRequestForPosts() {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {return}
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts"     ) else {return}
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error {
@@ -51,7 +51,11 @@ class ViewController: UIViewController {
    
     
     func postsArrayManager(_ json: [PostData]) {
-        for i in 1...10 {
+        var postsIdCount = 1
+        for id in json where id.userId != postsIdCount {
+            postsIdCount += 1
+        }
+        for i in 1...postsIdCount {
             postsArray.append(json.filter({$0.userId == i }))
         }
     }
@@ -87,7 +91,8 @@ extension ViewController: UITableViewDelegate {
             
         secondVC.commentURL = "https://jsonplaceholder.typicode.com/posts/\(indexPath.row + 1)/comments"
         }else {
-            secondVC.commentURL = "https://jsonplaceholder.typicode.com/posts/\(indexPath.section)\(indexPath.row + 1))/comments"
+            secondVC.commentURL = "https://jsonplaceholder.typicode.com/posts/\(indexPath.section)\(indexPath.row + 1)/comments"
+            print()
         }
     
         navigationController?.pushViewController(secondVC, animated: true)
