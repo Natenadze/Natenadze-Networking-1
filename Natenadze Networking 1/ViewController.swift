@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var postUrl = "https://jsonplaceholder.typicode.com/posts"
+    
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -23,36 +25,23 @@ class ViewController: UIViewController {
         tableView.frame = view.frame
         tableView.sectionFooterHeight = 0.0
         view.addSubview(tableView)
-        performRequestForPosts()
+        
+        NetworkManager.shared.performRequestForPosts(postUrl) { (data: [PostData]) in
+            self.postsArrayManager(data)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         tableView.dataSource = self
         tableView.delegate = self
     }
     
     // MARK: -  Networking
-    
-    func performRequestForPosts() {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts"     ) else {return}
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error {
-                print(error.localizedDescription)
-            }
-            guard let data else {return}
-            let result = try? JSONDecoder().decode([PostData].self, from: data)
-            guard let result else {return}
-            
-            self.postsArrayManager(result)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }.resume()
-    }
-    
-   
-    
+
     func postsArrayManager(_ json: [PostData]) {
         var postsIdCount = 1
         for id in json where id.userId != postsIdCount {
+            
             postsIdCount += 1
         }
         for i in 1...postsIdCount {

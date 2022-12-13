@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D3013D029433B3400FB631C /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3013CF29433B3400FB631C /* SecondVC.swift */; };
 		5D3013D2294349D000FB631C /* CommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3013D1294349D000FB631C /* CommentData.swift */; };
+		5D5C16B82948EB9000A9FFF2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5C16B72948EB9000A9FFF2 /* NetworkManager.swift */; };
 		5DCC5D052941EF2C005F05AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCC5D042941EF2C005F05AD /* AppDelegate.swift */; };
 		5DCC5D072941EF2C005F05AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCC5D062941EF2C005F05AD /* SceneDelegate.swift */; };
 		5DCC5D092941EF2C005F05AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCC5D082941EF2C005F05AD /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		5D3013CF29433B3400FB631C /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
 		5D3013D1294349D000FB631C /* CommentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentData.swift; sourceTree = "<group>"; };
+		5D5C16B72948EB9000A9FFF2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5DCC5D012941EF2C005F05AD /* Natenadze Networking 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Natenadze Networking 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DCC5D042941EF2C005F05AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DCC5D062941EF2C005F05AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +45,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D5C16B62948EB7D00A9FFF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5D5C16B72948EB9000A9FFF2 /* NetworkManager.swift */,
+				5DCC5D182941F532005F05AD /* PostData.swift */,
+				5D3013D1294349D000FB631C /* CommentData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5DCC5CF82941EF2C005F05AD = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +76,7 @@
 			children = (
 				5DCC5D042941EF2C005F05AD /* AppDelegate.swift */,
 				5DCC5D062941EF2C005F05AD /* SceneDelegate.swift */,
-				5DCC5D182941F532005F05AD /* PostData.swift */,
-				5D3013D1294349D000FB631C /* CommentData.swift */,
+				5D5C16B62948EB7D00A9FFF2 /* Model */,
 				5DCC5D082941EF2C005F05AD /* ViewController.swift */,
 				5D3013CF29433B3400FB631C /* SecondVC.swift */,
 				5DCC5D0A2941EF2C005F05AD /* Main.storyboard */,
@@ -150,6 +161,7 @@
 				5DCC5D092941EF2C005F05AD /* ViewController.swift in Sources */,
 				5D3013D2294349D000FB631C /* CommentData.swift in Sources */,
 				5D3013D029433B3400FB631C /* SecondVC.swift in Sources */,
+				5D5C16B82948EB9000A9FFF2 /* NetworkManager.swift in Sources */,
 				5DCC5D192941F532005F05AD /* PostData.swift in Sources */,
 				5DCC5D052941EF2C005F05AD /* AppDelegate.swift in Sources */,
 				5DCC5D072941EF2C005F05AD /* SceneDelegate.swift in Sources */,
