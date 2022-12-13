@@ -9,8 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    // changes in branch 1
-    
     
     private let tableView: UITableView = {
         let table = UITableView()
