@@ -25,19 +25,22 @@ class ViewController: UIViewController {
         tableView.frame = view.frame
         tableView.sectionFooterHeight = 0.0
         view.addSubview(tableView)
-        
-        NetworkManager.shared.performURLRequest(postUrl) { (data: [PostData]) in
-            self.postsArrayManager(data)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        fetchPosts()
         tableView.dataSource = self
         tableView.delegate = self
     }
     
     // MARK: -  Networking
 
+    func fetchPosts() {
+        NetworkManager.shared.performURLRequest(postUrl) { (data: [PostData]) in
+            self.postsArrayManager(data)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     func postsArrayManager(_ json: [PostData]) {
         var postsIdCount = 1
         for id in json where id.userId != postsIdCount {
@@ -83,6 +86,7 @@ extension ViewController: UITableViewDelegate {
             secondVC.commentURL = "https://jsonplaceholder.typicode.com/posts/\(indexPath.section)\(indexPath.row + 1)/comments"
             print()
         }
+        secondVC.keyForUserDefaults = postsArray[indexPath.section][indexPath.row].title
     
         navigationController?.pushViewController(secondVC, animated: true)
     }
