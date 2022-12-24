@@ -13,8 +13,6 @@ class SecondVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var keyForUserDefaults = ""
     var commentsArray = [CommentData]()
     
-    
-    
     let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -24,8 +22,6 @@ class SecondVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchComments()
-        
-        
         tableView.frame = view.frame
         tableView.delegate = self
         tableView.dataSource = self
@@ -33,7 +29,6 @@ class SecondVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func fetchComments() {
-        
         if UserDefaults.standard.object(forKey: keyForUserDefaults) == nil {
             NetworkManager.shared.performURLRequest(commentURL) { (data: [CommentData] ) in
                 if let obj = try? JSONEncoder().encode(data) {
@@ -54,12 +49,8 @@ class SecondVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     self.tableView.reloadData()
                 }
             }
-            
-            
         }
     }
-    
-    
     
     // MARK: - TableView cells
     
@@ -69,11 +60,7 @@ class SecondVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
         cell.textLabel?.text = self.commentsArray[indexPath.row].email
-        
-        
-        
         return cell
     }
 }

@@ -11,7 +11,6 @@ class ViewController: UIViewController {
     
     var postUrl = "https://jsonplaceholder.typicode.com/posts"
     
-    
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -51,7 +50,6 @@ class ViewController: UIViewController {
             postsArray.append(json.filter({$0.userId == i }))
         }
     }
-    
 }
 
 // MARK: - tableView Cells
@@ -95,7 +93,6 @@ extension ViewController: UITableViewDelegate {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 65))
         header.backgroundColor = .systemGray4
         
-        
         let imageView = UIImageView(image: UIImage(systemName: "person"))
         imageView.frame = CGRect(x: 10, y: 1, width: header.frame.size.height - 10,
                                  height: header.frame.size.height - 10)
@@ -109,7 +106,6 @@ extension ViewController: UITableViewDelegate {
         label.text = "User id is: \(postsArray[section][section].userId)"
         label.font = .boldSystemFont(ofSize: 20)
         header.addSubview(label)
-        
         return header
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
